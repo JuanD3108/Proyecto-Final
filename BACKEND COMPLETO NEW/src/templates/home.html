@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Ropa</title>
+    <style>
+        /* Estilos generales para todo el sitio */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            text-align: center;
+            padding: 50px;
+            background-color: #fa6e77;
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            font-weight: lighter;
+        }
+
+        /* Estilos para la barra de navegación */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            background-color: #ecf0f1;
+            padding: 10px 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fa6e77;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 10px 15px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #3498db;
+            color: white;
+            border-radius: 5px;
+        }
+
+        /* Estilos para las nuevas secciones */
+        .section {
+            padding: 50px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .section p {
+            font-size: 1.2rem;
+        }
+
+        /* Nueva sección para una imagen con background-image */
+        .imagen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-image: url("{{ url_for('static', filename='img/niñaHome.png') }}");
+            background-size: contain; /* Cambiado a contain para que la imagen se ajuste completamente */
+            background-repeat: no-repeat; /* Asegura que la imagen no se repita */
+            background-position: center;
+            height: 700px; /* Ajusta la altura según sea necesario */
+        }
+
+        /* Estilos para el pie de página */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #fa6e77;
+            color: #fff;
+            position: relative; /* Cambiado a relative */
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* Efectos de sombra y transiciones */
+        header h1, header p {
+            animation: fadeIn 2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>¡Bienvenido a la Tienda de Ropa!</h1>
+        <p>Explora nuestra colección de ropa de alta calidad.</p>
+    </header>
+
+    <!-- Barra de navegación -->
+    <nav>
+        <a href="#">Inicio</a>
+        <a href="{{ url_for('registro') }}">Registrarse</a>
+        <a href="{{ url_for('login') }}">Mi cuenta</a>
+        <a href="#acerca">Acerca de Nosotros</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+
+    <!-- Nueva sección para una imagen con background-image -->
+    <section class="imagen">
+        <!-- La imagen se establece como fondo en CSS -->
+    </section>
+
+    <!-- Sección "Acerca de Nosotros" -->
+    <section id="acerca" class="section">
+        <h2>Acerca de Nosotros</h2>
+        <p>
+            Somos una tienda de ropa dedicada a ofrecer productos de alta calidad a precios accesibles. Nuestro objetivo es proporcionar una experiencia de compra excepcional a todos nuestros clientes.
+        </p>
+    </section>
+
+    <!-- Sección "Contacto" -->
+    <section id="contacto" class="section">
+        <h2>Contacto</h2>
+        <p>
+            Si tienes alguna pregunta o necesitas asistencia, no dudes en contactarnos a través de nuestro formulario de contacto o llamando al 123-456-7890.
+        </p>
+    </section>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>© 2024 Tienda de Ropa. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

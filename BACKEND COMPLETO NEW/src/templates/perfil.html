@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario - Tienda de Ropa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h4 class="font-weight-bold py-3 mb-4">Perfil de Usuario</h4>
+        <div class="row">
+            <!-- Barra lateral de navegación -->
+            <div class="col-md-3">
+                <div class="list-group account-settings-links">
+                    <a href="#" class="list-group-item list-group-item-action active">Perfil</a>
+                    <a href="/productos" class="list-group-item list-group-item-action">Productos</a>
+                    <a href="/actualizar_perfil" class="list-group-item list-group-item-action">Actualizar Perfil</a>
+                    <a href="/historial_pedidos" class="list-group-item list-group-item-action">Historial de Pedidos</a>
+                    <a href="/logout" class="list-group-item list-group-item-action">Cerrar Sesión</a>
+                </div>
+            </div>
+
+            <!-- Contenido principal -->
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Información de usuario -->
+                        <div class="media align-items-center">
+                            <img src="https://images.vexels.com/media/users/3/135118/isolated/lists/676bf0e9f3c16649cd7f426c6dcd755a-signo-de-usuario-plano-con-fondo-redondo.png"
+                                class="d-block ui-w-80 rounded-circle" alt="Avatar">
+                            <div class="media-body ml-4">
+                                <h5 class="mt-0">{{ usuario.nombre }}</h5>
+                                <p>Email: {{ usuario.email }}</p>
+                                <p>Fecha de nacimiento: {{ usuario.fecha_nacimiento }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <!-- Información editable -->
+                        <div class="form-group">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control" value="{{ usuario.nombre }}" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" value="{{ usuario.email }}" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Teléfono</label>
+                            <input type="text" class="form-control" value="{{ usuario.telefono }}" disabled>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+<style>
+    /* Imagen de fondo para toda la página */
+    body {
+        background-image: url("{{url_for('static', filename='img/perfil.png')}}");
+        background-size: cover;
+        margin-top: 20px;
+    }
+
+    .ui-w-80 {
+        width: 80px !important;
+        height: auto;
+    }
+
+    .btn-default {
+        border-color: rgba(24, 28, 33, 0.1);
+        background: rgba(0, 0, 0, 0);
+        color: #4E5155;
+    }
+
+    label.btn {
+        margin-bottom: 0;
+    }
+
+    .btn-outline-primary {
+        border-color: #ffffff;
+        background: transparent;
+        color: #ffffff;
+    }
+
+    .btn {
+        cursor: pointer;
+    }
+
+    .text-light {
+        color: #babbbc !important;
+    }
+
+    .btn-facebook {
+        border-color: rgba(0, 0, 0, 0);
+        background: #ffffff;
+        color: #fff;
+    }
+
+    .btn-instagram {
+        border-color: rgba(0, 0, 0, 0);
+        background: #000;
+        color: #fff;
+    }
+
+    .card {
+        background-clip: padding-box;
+        box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
+    }
+
+    .row-bordered {
+        overflow: hidden;
+    }
+
+    .account-settings-fileinput {
+        position: absolute;
+        visibility: hidden;
+        width: 1px;
+        height: 1px;
+        opacity: 0;
+    }
+
+    .account-settings-links .list-group-item.active {
+        font-weight: bold !important;
+    }
+
+    html:not(.dark-style) .account-settings-links .list-group-item.active {
+        background: transparent !important;
+    }
+
+    .account-settings-multiselect~.select2-container {
+        width: 100% !important;
+    }
+
+    .light-style .account-settings-links .list-group-item {
+        padding: 0.85rem 1.5rem;
+        border-color: rgba(24, 28, 33, 0.03) !important;
+    }
+
+    .light-style .account-settings-links .list-group-item.active {
+        color: #4e5155 !important;
+    }
+
+    .material-style .account-settings-links .list-group-item {
+        padding: 0.85rem 1.5rem;
+        border-color: rgba(24, 28, 33, 0.03) !important;
+    }
+
+    .material-style .account-settings-links .list-group-item.active {
+        color: #4e5155 !important;
+    }
+
+    .dark-style .account-settings-links .list-group-item {
+        padding: 0.85rem 1.5rem;
+        border-color: rgba(255, 255, 255, 0.03) !important;
+    }
+
+    .dark-style .account-settings-links .list-group-item.active {
+        color: #fff !important;
+    }
+
+    .light-style .account-settings-links .list-group-item.active {
+        color: #4E5155 !important;
+    }
+
+    .light-style .account-settings-links .list-group-item {
+        padding: 0.85rem 1.5rem;
+        border-color: rgba(24, 28, 33, 0.03) !important;
+    }
+</style>
+
+</html>

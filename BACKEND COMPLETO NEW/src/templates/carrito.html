@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background-color: #2196F3;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 2em;
+        }
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.2em;
+            color: #333;
+        }
+
+        /* Estilos para la lista de productos en el carrito */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            font-size: 1.1em;
+            background-color: #fafafa;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+
+        /* Estilos para los enlaces (eliminar) */
+        a {
+            color: #F44336;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #d32f2f;
+        }
+
+        /* Estilos para el botón de procesar pago */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.2em;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Estilo para el enlace "Seguir comprando" */
+        .seguir-comprando {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #2196F3;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .seguir-comprando:hover {
+            color: #1976D2;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        Carrito de Compras
+    </header>
+    <div class="container">
+        <h1>Tu Carrito</h1>
+        <ul>
+            {% for item in carrito %}
+                <li>
+                    <span>{{ item.producto }} - {{ item.cantidad }}</span>
+                    <a href="{{ url_for('eliminar_del_carrito', id=item.id) }}">Eliminar</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{{ url_for('productos') }}" class="seguir-comprando">Seguir comprando</a>
+        <form action="{{ url_for('procesar_pago') }}" method="post">
+            <button type="submit">Procesar Pago</button>
+        </form>
+    </div>
+</body>
+</html>

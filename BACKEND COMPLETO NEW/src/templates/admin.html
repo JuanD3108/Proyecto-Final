@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 2em;
+            border-bottom: 3px solid #388E3C;
+        }
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #388E3C;
+        }
+
+        /* Estilos para los enlaces */
+        .actions {
+            margin-top: 10px;
+            display: inline-block;
+            padding: 0 10px;
+        }
+
+        /* Lista de productos */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            font-size: 1.1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+
+        /* Estilos para los botones de editar y eliminar */
+        .edit, .delete {
+            padding: 8px 15px;
+            margin: 5px;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .edit {
+            background-color: #FFA500;
+        }
+        .delete {
+            background-color: #FF5733;
+        }
+        .edit:hover {
+            background-color: #e68a00;
+        }
+        .delete:hover {
+            background-color: #e64a19;
+        }
+
+        /* Estilos para el botón de "Cerrar Sesión" */
+        .logout {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            padding: 12px 20px;
+            background-color: #d32f2f;
+            color: white;
+            border-radius: 5px;
+            font-size: 1.1em;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .logout:hover {
+            background-color: #c2185b;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        Panel de Administración
+    </header>
+    <div class="container">
+        <h2>Gestión de Productos</h2>
+        <a href="{{ url_for('agregar_producto') }}" style="display: block; text-align: center; margin-bottom: 20px; font-size: 1.2em; font-weight: bold;">Agregar Producto</a>
+        <ul>
+            {% for producto in productos %}
+                <li>
+                    <span>{{ producto.nombre }} - ${{ producto.precio }}</span>
+                    <div class="actions">
+                        <a href="{{ url_for('editar_producto', id=producto.id) }}" class="edit">Editar</a>
+                        <a href="{{ url_for('eliminar_producto', id=producto.id) }}" class="delete">Eliminar</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{{ url_for('logout') }}" class="logout">Cerrar Sesión</a>
+    </div>
+</body>
+</html>
